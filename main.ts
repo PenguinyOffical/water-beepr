@@ -1,6 +1,10 @@
 input.onButtonPressed(Button.A, function () {
-    cakLandSoil.displayMoisture(cakLandSoil.SoilPin.P0)
-    basic.pause(2000)
+    if (cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.VERY_WET) || cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.WET)) {
+        basic.showString("WET")
+    }
+    if (cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.DRY) || cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.VERY_DRY)) {
+        basic.showString("DRY")
+    }
 })
 input.onButtonPressed(Button.AB, function () {
     mL = 5 * COUNTER
@@ -14,20 +18,14 @@ let Amount = 0
 let mL = 0
 let COUNTER = 0
 COUNTER = 0
-basic.showLeds(`
-    . . . . .
-    . # . # .
-    . . . . .
-    . # . # .
-    . # # # .
-    `)
+basic.showNumber(0.7)
 loops.everyInterval(10000, function () {
     if (Amount > 1) {
         basic.showIcon(IconNames.No)
     }
 })
 basic.forever(function () {
-    if (cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.VERY_WET)) {
+    if (cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.VERY_WET) || cakLandSoil.ifMoisture(cakLandSoil.SoilPin.P0, cakLandSoil.Mlevel.WET)) {
         basic.showIcon(IconNames.Happy)
     } else {
         basic.showIcon(IconNames.Umbrella)
