@@ -1,6 +1,7 @@
 
 > Open this page at [https://penguinyoffical.github.io/water-beepr/](https://penguinyoffical.github.io/water-beepr/)
-
+## Important
+This project requires the Climate Action Land Kit and a BBC Microbit V1 or V2
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
